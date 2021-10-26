@@ -8,7 +8,9 @@ namespace WpfApp3
 {
     static public class Class1
     {
+        
         static public string imie;
         static public int count;
+        
     }
 }

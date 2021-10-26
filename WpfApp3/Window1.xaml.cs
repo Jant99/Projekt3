@@ -24,15 +24,17 @@ namespace WpfApp3
             InitializeComponent();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Class1.imie = dodajimie.Text;
+      
 
-        }
-
-        private void dodajcount_TextChanged(object sender, TextChangedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Class1.count = int.Parse(dodajcount.Text);
+            string imiee= dodajimie.Text;
+
+            int countt = int.Parse(dodajcount.Text);
+            ((MainWindow)Application.Current.MainWindow).dodaj_osobe(imiee, countt);
+
+            this.Close();
+            
         }
     }
 }
