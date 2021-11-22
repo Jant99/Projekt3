@@ -19,25 +19,36 @@ namespace WpfApp3
     /// <summary>
     /// Logika interakcji dla klasy MainWindow.xaml
     /// </summary>
+
+   
+        
     
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-          
+           
 
         }
 
         List<osoba> lista_osob = new List<osoba>();
 
+        static void MoveItemAtIndexToFront(List<osoba> list, int index)
+        {
+            osoba item = list[index];
+            list.RemoveAt(index);
+            list.Insert(0, item);
+        }
 
         public class osoba
         {
+
             public string Name { get; set; }
             public int ID { get; set; }
             public int Count { get; set; }
         }
+        
           
         public void dodaj_osobe(string imie, int wiek)
         {
@@ -52,7 +63,20 @@ namespace WpfApp3
 
         }
 
-        
+        public void wyszukaj_po_imieniu (string imie)
+        {
+            List<osoba> znalezione = lista_osob.Where(e => e.Name.Equals(imie)).ToList();
+            for (int i = 0; i < znalezione.Count(); i++)
+            {
+                for (int j = 0; j < Tabela.Items.Count; j++)
+                {
+                    if ( == znalezione[i].ID)
+                        MoveItemAtIndexToFront(lista_osob, j);
+                }
+            }
+            Tabela.Items.Refresh();
+
+        }
 
         
 
@@ -108,6 +132,13 @@ namespace WpfApp3
             }
             sw.Close();
 
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Window2 oknowyszukiwania = new Window2();
+            oknowyszukiwania.Show();
+            Tabela.Items.Refresh();
         }
     }
 }
