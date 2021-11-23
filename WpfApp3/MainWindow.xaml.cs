@@ -43,7 +43,8 @@ namespace WpfApp3
             public int ID { get; set; }
             public int Count { get; set; }
         }
-        
+
+        string lokalizacja;
           
         public void dodaj_osobe(string imie, int wiek)
         {
@@ -112,6 +113,7 @@ namespace WpfApp3
                 lista_osob.Add(new_person);
                 Tabela.Items.Add(new_person);
                 System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(new_person.GetType());
+                lokalizacja = path;
             }
             
             
@@ -143,7 +145,7 @@ namespace WpfApp3
         {
             Window2 oknowyszukiwania = new Window2();
             oknowyszukiwania.Show();
-            Tabela.Items.Refresh();
+           
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
@@ -156,12 +158,12 @@ namespace WpfApp3
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
-            string path = "C:/Users/Jan/source/repos/WpfApp3/WpfApp3/Wyjsscie.csv";
+            string path = lokalizacja;
             StreamWriter sw = new StreamWriter(path);
             //var csv = new StringBuilder();
             foreach (osoba person in lista_osob)
             {
-
+                System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(person.GetType());
                 var first = person.Name;
                 var second = person.ID;
                 var third = person.Count;
