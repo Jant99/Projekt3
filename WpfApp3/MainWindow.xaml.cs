@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Windows.Controls.Primitives;
 
 namespace WpfApp3
 {
@@ -34,12 +35,6 @@ namespace WpfApp3
 
         List<osoba> lista_osob = new List<osoba>();
 
-        static void MoveItemAtIndexToFront(ListView Lvi, int index)
-        {
-            object v = Lvi.SelectedItems[index];
-            Lvi.Items.RemoveAt(index);
-            Lvi.Items.Insert(0, v);
-        }
 
         public class osoba
         {
@@ -116,6 +111,7 @@ namespace WpfApp3
                 new_person.Count = Convert.ToInt32(tab[2]);
                 lista_osob.Add(new_person);
                 Tabela.Items.Add(new_person);
+                System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(new_person.GetType());
             }
             
             
@@ -148,6 +144,40 @@ namespace WpfApp3
             Window2 oknowyszukiwania = new Window2();
             oknowyszukiwania.Show();
             Tabela.Items.Refresh();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+
+            //((MainWindow)Application.Current.MainWindow).Popup1.IsOpen = true;
+            Popup1.IsOpen = true;
+            
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            string path = "C:/Users/Jan/source/repos/WpfApp3/WpfApp3/Wyjsscie.csv";
+            StreamWriter sw = new StreamWriter(path);
+            //var csv = new StringBuilder();
+            foreach (osoba person in lista_osob)
+            {
+
+                var first = person.Name;
+                var second = person.ID;
+                var third = person.Count;
+                var newLine = string.Format("{0},{1},{2}", first, second, third);
+                //csv.AppendLine(newLine);
+                sw.WriteLine(newLine);
+
+            }
+            sw.Close();
+            this.Popup1.IsOpen = false;
+            ((MainWindow)Application.Current.MainWindow).Close();
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).Close();
         }
     }
 }

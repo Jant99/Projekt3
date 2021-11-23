@@ -10,7 +10,7 @@
         <Button Content="Zapis do pliku CSV" HorizontalAlignment="Left" Margin="189,321,0,0" VerticalAlignment="Top" Width="134" Height="40" Click="Button_Click_2"/>
         <Button Content="Odczyt z pliku CSV" HorizontalAlignment="Left" Margin="474,321,0,0" VerticalAlignment="Top" Width="135" Height="40" Click="Button_Click_1"/>
         <Button Content="Dodaj" HorizontalAlignment="Left" Margin="648,109,0,0" VerticalAlignment="Top" Width="99" Height="46" Click="Button_Click"/>
-        <ListView Name="Tabela" HorizontalAlignment="Left" Height="178" Margin="189,109,0,0" VerticalAlignment="Top" Width="420" >
+        <ListView Name="Tabela" HorizontalAlignment="Left" Height="197" Margin="189,109,0,0" VerticalAlignment="Top" Width="420" >
             <ListView.View>
                 <GridView AllowsColumnReorder="True">
                     <GridViewColumn  DisplayMemberBinding="{Binding Path=Name}" Header="Imię" Width="180"/>
@@ -19,7 +19,17 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Wyszukaj" HorizontalAlignment="Left" Margin="648,197,0,0" VerticalAlignment="Top" Width="99" Height="46" Click="Button_Click_3"/>
-
+        <Button Content="Wyszukaj" HorizontalAlignment="Left" Margin="648,182,0,0" VerticalAlignment="Top" Width="99" Height="46" Click="Button_Click_3"/>
+        <Button Content="Zamknij" HorizontalAlignment="Left" Margin="648,260,0,0" VerticalAlignment="Top" Width="99" Height="46" Click="Button_Click_4"/>
+        <Popup Margin="10,10,0,210" Name="Popup1" HorizontalAlignment="Center" Width="194" IsOpen="False">
+            <StackPanel Margin="0,0,0.6,0" HorizontalAlignment="Right" Width="193">
+                <TextBlock Name="McTextBlock"   
+             Background="LightBlue" HorizontalAlignment="Center" >  
+            Zapisać zawartość tablicy?
+                </TextBlock>
+                <Button Content="Zapisz i zamknij" Click="Button_Click_5" />
+                <Button Content="Zamknij bez zapisywania" Click="Button_Click_6" />
+            </StackPanel>
+        </Popup>
     </Grid>
 </Window>
