@@ -179,5 +179,11 @@ namespace WpfApp3
         {
             ((MainWindow)Application.Current.MainWindow).Close();
         }
+
+        private void Zamykanie (object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            Popup1.IsOpen = true;
+        }
     }
 }
