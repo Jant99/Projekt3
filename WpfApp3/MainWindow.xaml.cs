@@ -34,11 +34,11 @@ namespace WpfApp3
 
         List<osoba> lista_osob = new List<osoba>();
 
-        static void MoveItemAtIndexToFront(List<osoba> list, int index)
+        static void MoveItemAtIndexToFront(ListView Lvi, int index)
         {
-            osoba item = list[index];
-            list.RemoveAt(index);
-            list.Insert(0, item);
+            object v = Lvi.SelectedItems[index];
+            Lvi.Items.RemoveAt(index);
+            Lvi.Items.Insert(0, v);
         }
 
         public class osoba
@@ -63,19 +63,28 @@ namespace WpfApp3
 
         }
 
-        public void wyszukaj_po_imieniu (string imie)
+        public List<osoba> wyszukaj_po_imieniu (string imie)
         {
+            
             List<osoba> znalezione = lista_osob.Where(e => e.Name.Equals(imie)).ToList();
+            /*
             for (int i = 0; i < znalezione.Count(); i++)
             {
                 for (int j = 0; j < Tabela.Items.Count; j++)
                 {
-                    if ( == znalezione[i].ID)
-                        MoveItemAtIndexToFront(lista_osob, j);
+                    if (Tabela.SelectedItems[j].ToString() == znalezione[i].ToString())
+                        MoveItemAtIndexToFront(Tabela, j);
                 }
             }
             Tabela.Items.Refresh();
+            */
+            return znalezione;
+        }
 
+        public List<osoba> wyszukaj_po_wieku (int wiek)
+        {
+            List<osoba> znalezione = lista_osob.Where(e => e.Count.Equals(wiek)).ToList();
+            return znalezione;
         }
 
         

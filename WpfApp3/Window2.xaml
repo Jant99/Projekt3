@@ -9,7 +9,7 @@
     <Grid>
         <Label Content="Wprowadz imię lub wiek" HorizontalAlignment="Left" Margin="511,70,0,0" VerticalAlignment="Top" Height="33" Width="250" FontSize="16"/>
         <TextBox Name="Textbox1" HorizontalAlignment="Left" Height="43" Margin="511,142,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="250"/>
-        <ListView HorizontalAlignment="Left" Height="179" Margin="78,142,0,0" VerticalAlignment="Top" Width="404">
+        <ListView Name="Tabznalezionych" HorizontalAlignment="Left" Height="179" Margin="78,142,0,0" VerticalAlignment="Top" Width="404">
             <ListView.View>
                 <GridView AllowsColumnReorder="True">
                     <GridViewColumn  DisplayMemberBinding="{Binding Path=Name}" Header="Imię" Width="180"/>
@@ -20,7 +20,7 @@
             </ListView.View>
         </ListView>
         <Button Content="Zatwierdz" HorizontalAlignment="Left" Margin="573,231,0,0" VerticalAlignment="Top" Width="109" Height="40" Click="Button_Click"/>
-        <Button Content="Zamknij" HorizontalAlignment="Left" Margin="573,303,0,0" VerticalAlignment="Top" Width="110" Height="46"/>
+        <Button Content="Zamknij" HorizontalAlignment="Left" Margin="573,303,0,0" VerticalAlignment="Top" Width="110" Height="46" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
